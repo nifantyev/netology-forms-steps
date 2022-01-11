@@ -11,6 +11,15 @@ const Trainings = () => {
     new TrainingModel('30.06.2019', 15.7),
   ]);
 
+  const [form, setForm] = useState({
+    date: '',
+    distance: '',
+  });
+
+  const handleChange = (name, value) => {
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
+
   const handleSave = (training) => {
     setTrainings((prevTrainings) => {
       let index = prevTrainings.findIndex((o) => o.date === training.date);
@@ -39,7 +48,7 @@ const Trainings = () => {
 
   return (
     <div className="trainings">
-      <TrainingForm onSave={handleSave} />
+      <TrainingForm form={form} onChange={handleChange} onSave={handleSave} />
       <TrainingList trainings={sorted} onDelete={handleDelete} />
     </div>
   );

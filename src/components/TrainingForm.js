@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import TrainingModel from '../models/TrainingModel';
 
-const TrainingForm = ({ onSave }) => {
-  const [form, setForm] = useState({
-    date: '',
-    distance: '',
-  });
-
+const TrainingForm = ({ form, onChange, onSave }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const training = new TrainingModel(form.date, parseFloat(form.distance));
@@ -16,7 +11,7 @@ const TrainingForm = ({ onSave }) => {
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
-    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+    onChange(name, value);
   };
 
   return (
@@ -53,6 +48,8 @@ const TrainingForm = ({ onSave }) => {
 };
 
 TrainingForm.propTypes = {
+  form: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
 };
 
