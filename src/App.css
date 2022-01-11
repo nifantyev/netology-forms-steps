@@ -56,3 +56,54 @@ html {
   cursor: pointer;
   font-size: 18px;
 }
+
+/*************************************************************
+  List
+**************************************************************/
+
+.training-list {
+  width: 700px;
+}
+
+.header {
+  display: flex;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+.header__date, .header__distance, .header__actions {
+  flex-basis: 100%;
+}
+
+.header__distance, .header__actions {
+  text-align: center;
+}
+
+.list {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.training {
+  width: 100%;
+  display: flex;
+}
+
+.training:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.training__date, .training__distance, .training__actions {
+  flex-basis: 100%;
+}
+
+.training__distance, .training__actions {
+  text-align: center;
+}
+
+.training__actions a {
+  color: black;
+  text-decoration: none;
+}
