@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TrainingModel from '../models/TrainingModel';
 
-const TrainingList = ({ trainings, onDelete }) => {
+const TrainingList = ({ trainings, onDelete, onEdit }) => {
   const handleDelete = (evt, date) => {
     evt.preventDefault();
     onDelete(date);
+  };
+
+  const handleEdit = (evt, date) => {
+    evt.preventDefault();
+    onEdit(date);
   };
 
   return (
@@ -21,6 +26,9 @@ const TrainingList = ({ trainings, onDelete }) => {
             <div className="training__date">{o.date}</div>
             <div className="training__distance">{o.distance}</div>
             <div className="training__actions">
+              <a href="#/" onClick={(evt) => handleEdit(evt, o.date)}>
+                <span className="material-icons">edit</span>
+              </a>
               <a href="#/" onClick={(evt) => handleDelete(evt, o.date)}>
                 ✘
               </a>
